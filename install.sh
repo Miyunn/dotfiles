@@ -32,11 +32,7 @@ if [[ $install_nvchad =~ ^[Yy]$ ]]; then
     exit 1
   }
 else
-  echo "Installing Custom Noevim configuration"
-  cp -r nvim ~/.config || {
-    echo "Error: Failed to copy Neovim configuration"
-    exit 1
-  }
+  echo "skipping installing Neovim configurations"
 fi
 
 # ZSH configuration
