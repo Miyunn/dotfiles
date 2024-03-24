@@ -14,8 +14,8 @@ blur = true
 dynamic_padding = false
 
 [window.dimensions]
-columns = 100
-lines = 25
+columns = 80
+lines = 20
 
 [window.padding]
 x = 5
