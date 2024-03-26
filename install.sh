@@ -2,7 +2,7 @@
 
 # Install required packages
 echo "Installing required packages..."
-sudo pacman -Syu neovim neofetch alacritty zsh git|| {
+sudo pacman -Syu neovim neofetch alacritty zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk || {
   echo "Error: Package installation failed. Please check your network connection or package repositories."
   exit 1
 }
@@ -11,14 +11,12 @@ sudo pacman -Syu neovim neofetch alacritty zsh git|| {
 echo "Installing Alacritty configuration..."
 cp -r alacritty ~/.config || {
   echo "Error: Failed to copy Alacritty configuration."
-  exit 1
 }
 
 # Neofetch configuration
 echo "Installing Neofetch configuration..."
 cp -r neofetch ~/.config || {
   echo "Error: Failed to copy Neofetch configuration."
-  exit 1
 }
 
 # Neovim configuration prompt (Y/N)
@@ -35,8 +33,7 @@ else
   echo "skipping installing Neovim configurations"
 fi
 
-# ZSH configuration
-# ...
+
 
 echo "Installation complete!"
 
