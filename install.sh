@@ -33,7 +33,13 @@ else
   echo "skipping installing Neovim configurations"
 fi
 
+# ZSH configuration
+echo "Installing Oh My Zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || {
+  echo "Failed to install oh my zsh"
+}
 
+cp ohmyzsh/.zshrc ~
 
 echo "Installation complete!"
 
