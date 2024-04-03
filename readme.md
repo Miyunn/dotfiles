@@ -1,8 +1,8 @@
 # Miyuun Dot files (WIP)
 
 ## Combatibility 
-The install.sh scirpt is only arch linux compatible due to the usage of pacman to install packages
-Any desktop enviroment using wayland
+- Arch Linux (uses pacman)
+- Wayland (Alacritty background blur)
 
 ## Install
 Execute install.sh to install dependencies and configs or you can manually download the packages and move the config files
