@@ -1,7 +1,7 @@
 # Miyuun Dot files (WIP)
 
 ## Combatibility 
-- Arch Linux (uses pacman)
+- Arch Linux (for package installation)
 - Wayland (Alacritty background blur)
 
 ## Install
