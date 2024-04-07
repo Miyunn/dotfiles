@@ -2,7 +2,7 @@
 
 # Install required packages
 echo "Installing required packages..."
-sudo pacman -Syu neovim neofetch alacritty zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk || {
+sudo pacman -Syu neovim neofetch alacritty zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard || {
   echo "Error: Package installation failed. Please check your network connection or package repositories."
   exit 1
 }
