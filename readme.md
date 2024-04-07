@@ -14,6 +14,7 @@ Execute install.sh to install dependencies and configs or you can manually downl
 - zsh
 - tff-jetbrains-mono-nerd
 - noto-fonts-cjk
+- wl-clipboard
 
 ## Packages (optional)
 - Chromium
