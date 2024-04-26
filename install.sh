@@ -1,12 +1,16 @@
 #!/bin/bash
 
+# Install Plasma
+echo "Installing plasma..."
+sudo pacman -S plasma
+
 # Install required packages
 echo "Installing required packages..."
-sudo pacman -Syu neovim neofetch alacritty zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard || {
+sudo pacman -Syu neovim neofetch alacritty zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin|| {
   echo "Error: Package installation failed. Please check your network connection or package repositories."
   exit 1
 }
-
+#
 # Alacritty configuration
 echo "Installing Alacritty configuration..."
 cp -r alacritty ~/.config || {
@@ -41,5 +45,19 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 cp ohmyzsh/.zshrc ~
 
-echo "Installation complete!"
+#set hardware clock as standard local time
+echo "Setting hardware clock as standard local time"
+timedatectl set-local-rtc 1
 
+#Removing unwanted packages
+sudo pamcan -R discover
+
+#Reboot prompt
+echo "Installation completed!"
+echo "Reboot system for settings to take effect"
+
+if [[ $install_nvchad =~ ^[Yy]$ ]]; then
+  reboot 
+read -r -p "(Y/n) " install_nvchad
+
+#Completed
