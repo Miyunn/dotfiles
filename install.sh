@@ -6,11 +6,11 @@ sudo pacman -S plasma
 
 # Install required packages
 echo "Installing required packages..."
-sudo pacman -Syu neovim neofetch alacritty zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin|| {
+sudo pacman -Syu neovim neofetch alacritty zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin ripgrep|| {
   echo "Error: Package installation failed. Please check your network connection or package repositories."
   exit 1
 }
-#
+
 # Alacritty configuration
 echo "Installing Alacritty configuration..."
 cp -r alacritty ~/.config || {
@@ -24,14 +24,13 @@ cp -r neofetch ~/.config || {
 }
 
 # Neovim configuration prompt (Y/N)
-echo "Install Default NVChad configuration (Recommended)?"
-read -r -p "(Y/n) " install_nvchad
-
-if [[ $install_nvchad =~ ^[Yy]$ ]]; then
-  echo "Installing NVChad..."
-  git clone https://github.com/NvChad/starter ~/.config/nvim || {
-    echo "Error: Failed to clone NVChad configuration."
-    exit 1
+echo "Install Neovim configs (Recommended)?"
+read -r -p "(Y/n) " install_neovim
+if [[ $install_neovim =~ ^[Yy]$ ]]; then
+echo "Installing Neovim configuration..."
+cp -r neovim ~/.config || {
+  echo "Error: Failed to copy Neovim configuration."
+}
   }
 else
   echo "skipping installing Neovim configurations"
