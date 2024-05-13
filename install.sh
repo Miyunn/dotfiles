@@ -26,12 +26,12 @@ cp -r neofetch ~/.config || {
 # Neovim configuration prompt (Y/N)
 echo "Install Neovim configs (Recommended)?"
 read -r -p "(Y/n) " install_neovim
+
 if [[ $install_neovim =~ ^[Yy]$ ]]; then
 echo "Installing Neovim configuration..."
 cp -r neovim ~/.config || {
   echo "Error: Failed to copy Neovim configuration."
 }
-  }
 else
   echo "skipping installing Neovim configurations"
 fi
@@ -58,5 +58,6 @@ echo "Reboot system for settings to take effect"
 if [[ $install_nvchad =~ ^[Yy]$ ]]; then
   reboot 
 read -r -p "(Y/n) " install_nvchad
+fi
 
-#Completed
+#completed
