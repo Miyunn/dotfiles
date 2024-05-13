@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+#
+#
 
 # Install Plasma
 echo "Installing plasma..."
@@ -25,11 +28,11 @@ cp -r neofetch ~/.config || {
 
 # Neovim configuration prompt (Y/N)
 echo "Install Neovim configs (Recommended)?"
-read -r -p "(Y/n) " install_neovim
+read -r -p "(Y/n) " install_nvim
 
-if [[ $install_neovim =~ ^[Yy]$ ]]; then
+if [[ $install_nvim =~ ^[Yy]$ ]]; then
 echo "Installing Neovim configuration..."
-cp -r neovim ~/.config || {
+cp -r nvim ~/.config || {
   echo "Error: Failed to copy Neovim configuration."
 }
 else
