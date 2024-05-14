@@ -17,6 +17,7 @@ Execute install.sh to install dependencies and configs or you can manually downl
 - tff-jetbrains-mono-nerd
 - Ripgrep
 - wl-clipboard
+- zip and unzip
 - zsh(Oh My Zsh)
 
 ## Packages (optional)
