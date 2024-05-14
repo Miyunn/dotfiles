@@ -1,15 +1,15 @@
 #!/bin/bash
 #
+# Color
 #
 #
-
 # Install Plasma
 echo "Installing plasma..."
 sudo pacman -S plasma
 
 # Install required packages
 echo "Installing required packages..."
-sudo pacman -Syu neovim neofetch alacritty zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin ripgrep|| {
+sudo pacman -Syu neovim neofetch alacritty zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin ripgrep unzip zip|| {
   echo "Error: Package installation failed. Please check your network connection or package repositories."
   exit 1
 }
