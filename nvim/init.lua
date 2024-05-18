@@ -17,10 +17,16 @@ require("lazy").setup("plugins")
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Enable system clipboard interactions with yank and paste 
 vim.opt.clipboard:append("unnamedplus")
 vim.api.nvim_set_keymap('n', 'p', '"+p', { noremap = true })
 vim.api.nvim_set_keymap('v', 'P', '"+p', { noremap = true })
 vim.api.nvim_set_keymap('n', 'y', '"+y', { noremap = true })
 vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
+
+-- Allow mouse in all vim modes (cause why not)
 vim.opt.mouse = "a"
 
+-- Bidning to set from buffer to buffer 
+vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
