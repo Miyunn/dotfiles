@@ -1,4 +1,4 @@
-# Miyuun Dot files (WIP)
+# Miyuun Dot files
 
 ## Combatibility 
 - Arch Linux (Installation script)
