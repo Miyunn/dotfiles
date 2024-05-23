@@ -26,5 +26,7 @@ Execute install.sh to install dependencies and configs or you can manually downl
 - Spotify (spotify-launcher)
 - Spectacle
 
-## Notes
-- The install script will install nvchad with no modifications (you can skip this if you want to)
+## Known issues 
+- When using the install script after zsh is installed the script will stop, work around is to manually add the .zshrc file
+- Installation script is not configured to install the plasma configs
+
