@@ -1,7 +1,7 @@
 # Miyuun Dot files (WIP)
 
 ## Combatibility 
-- Arch Linux (for package installation)
+- Arch Linux (Installation script)
 - Wayland (Alacritty background blur)
 - KDE Plasma (will be installed)
 
