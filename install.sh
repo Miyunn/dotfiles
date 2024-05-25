@@ -1,66 +1,103 @@
 #!/bin/bash
-#
-# Color
-#
-#
+
+# Color codes
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+success_message() {
+  echo -e "${GREEN}$1${NC}"
+}
+
+error_message() {
+  echo -e "${RED}$1${NC}"
+}
+
+cat splash_art.txt
+
+echo "Welcome to my custom Arch Linux dot files installation script for KDE Plasma(You can skip Plasma installation if you want)."    
+echo "This script will install the required packages and configurations for my Arch Linux setup."
+echo "Please make sure you have an active internet connection before running this script."
+echo "Make sure to read the README.md file before running this script." 
+echo "Press any key to continue..."
+read -n 1 -s
+
+#check if the OS is arch linux 
+if [ ! -f /etc/arch-release ]; then
+  error_message "Error: This script is only for Arch Linux."
+  exit 1
+fi
+
+echo ""
+
+# Plasma installation prompt 
+echo "Install KDE Plasma"
+read -r -p "(Y/n) " install_plasma
+
+echo ""
+# Neovim configuration prompt 
+echo "Install Neovim configs?"
+read -r -p "(Y/n) " install_nvim
+
+echo ""
+echo "Do you want to set the hardware clock as local time?"
+read -r -p "(Y/n) " set_hwclock
+
+echo ""
+echo "Reboot after installation?"
+read -r -p "(Y/n) " reboot 
+
 # Install Plasma
-echo "Installing plasma..."
-sudo pacman -S plasma
+if [[ $install_plasma =~ ^[Yy]$ ]]; then
+  echo "Installing plasma..."
+  sudo pacman -S plasma && success_message "Plasma installed successfully." || error_message "Failed to install Plasma."
+else
+  echo "Skipping installing Plasma."
+fi
 
 # Install required packages
 echo "Installing required packages..."
-sudo pacman -Syu neovim neofetch alacritty zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin ripgrep unzip zip|| {
-  echo "Error: Package installation failed. Please check your network connection or package repositories."
+sudo pacman -Syu neovim neofetch alacritty chromium zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin ripgrep unzip zip && success_message "Required packages installed successfully." || {
+  error_message "Error: Package installation failed. Please check your network connection or package repositories."
+  exit 1
+}
+
+# Installing extra packages 
+echo "Installing extra packages..."
+sudo pacman -Syu discord spotify-launcher kate spectacle easyeffects lsp-plugins && success_message "Extra packages installed successfully." || {
+  error_message "Error: Package installation failed. Please check your network connection or package repositories."
   exit 1
 }
 
 # Alacritty configuration
-echo "Installing Alacritty configuration..."
-cp -r alacritty ~/.config || {
-  echo "Error: Failed to copy Alacritty configuration."
-}
+cp -r alacritty ~/.config && success_message "Alacritty configuration installed successfully." || error_message "Failed to copy Alacritty configuration."
 
 # Neofetch configuration
-echo "Installing Neofetch configuration..."
-cp -r neofetch ~/.config || {
-  echo "Error: Failed to copy Neofetch configuration."
-}
+cp -r neofetch ~/.config && success_message "Neofetch configuration installed successfully." || error_message "Failed to copy Neofetch configuration."
 
-# Neovim configuration prompt (Y/N)
-echo "Install Neovim configs (Recommended)?"
-read -r -p "(Y/n) " install_nvim
-
+# Neovim configuration installation
 if [[ $install_nvim =~ ^[Yy]$ ]]; then
-echo "Installing Neovim configuration..."
-cp -r nvim ~/.config || {
-  echo "Error: Failed to copy Neovim configuration."
-}
-else
-  echo "skipping installing Neovim configurations"
+  cp -r nvim ~/.config && success_message "Neovim configuration installed successfully." || error_message "Failed to copy Neovim configuration."
 fi
 
-# ZSH configuration
-echo "Installing Oh My Zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || {
-  echo "Failed to install oh my zsh"
-}
+# Set hardware clock as local time 
+if [[ $set_hwclock =~ ^[Yy]$ ]]; then
+  sudo timedatectl set-local-rtc 1 && success_message "Hardware clock set as standard local time." || error_message "Failed to set hardware clock."
+fi
 
-cp ohmyzsh/.zshrc ~
+# Removing unwanted packages
+sudo pacman -R discover && success_message "Unwanted packages removed." || error_message "Failed to remove unwanted packages."
 
-#set hardware clock as standard local time
-echo "Setting hardware clock as standard local time"
-timedatectl set-local-rtc 1
+# ohmyzsh installation 
+echo "Installing Oh My Zsh..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && success_message "Oh My Zsh installed successfully." || error_message "Failed to install Oh My Zsh."
 
-#Removing unwanted packages
-sudo pamcan -R discover
+# ohmyzsh config
+cp ohmyzsh/.zshrc ~ && success_message "Oh My Zsh configuration copied." || error_message "Failed to copy Oh My Zsh configuration."
 
-#Reboot prompt
-echo "Installation completed!"
-echo "Reboot system for settings to take effect"
+sudo systemctl enable sddm && success_message "SDDM enabled." || error_message "Failed to enable SDDM."
 
-if [[ $install_nvchad =~ ^[Yy]$ ]]; then
+# Reboot prompt
+if [[ $reboot =~ ^[Yy]$ ]]; then
   reboot 
-read -r -p "(Y/n) " install_nvchad
 fi
-
-#completed
