@@ -10,7 +10,7 @@ Execute install.sh to install dependencies and configs or you can manually downl
 
 ## Packages (main)
 - Alacritty
-- KDE Plasma
+- KDE Plasma (optional)
 - neovim
 - neofetch
 - noto-fonts-cjk
@@ -25,8 +25,10 @@ Execute install.sh to install dependencies and configs or you can manually downl
 - Discord
 - Spotify (spotify-launcher)
 - Spectacle
+- Easy effects
+- Linux studio plugins (lsp-plugins)
 
 ## Known issues 
-- When using the install script after zsh is installed the script will stop, work around is to manually add the .zshrc file
+- When using the install script after zsh is installed the script will stop, work around is to re-run the script
 - Installation script is not configured to install the plasma configs
 
