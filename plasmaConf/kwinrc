@@ -14,6 +14,9 @@ Active=true
 EveningBeginFixed=2200
 Mode=Times
 
+[Plugins]
+poloniumEnabled=true
+
 [TabBox]
 LayoutName=compact
 
@@ -30,10 +33,13 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.5828125},{"width":0.41718750000000004}]}
 
 [Tiling][b6bba8c4-d0dc-57f0-977e-9a98af78fa1a]
-tiles={"layoutDirection":"horizontal","tiles":[]}
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.5},{"width":0.5}]}
 
 [Tiling][c3031ae2-7472-51e0-9f93-74b4ddefb28e]
 tiles={"layoutDirection":"floating","tiles":[{"height":0.9999999999999986,"width":1,"x":4.445228907190568e-17,"y":0}]}
+
+[Tiling][c57ead5d-8d68-537c-a151-46f42cf745b0]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.5},{"width":0.5}]}
 
 [Xwayland]
 Scale=1
