@@ -16,6 +16,7 @@ Execute install.sh to install dependencies and configs or you can manually downl
 - noto-fonts-cjk
 - tff-jetbrains-mono-nerd
 - Ripgrep
+- Stow
 - wl-clipboard
 - zip and unzip
 - zsh(Oh My Zsh)
@@ -32,3 +33,5 @@ Execute install.sh to install dependencies and configs or you can manually downl
 - When using the install script after zsh is installed the script will stop, work around is to re-run the script
 - Installation script is not configured to install the plasma configs
 
+## Updating
+- To update the dotfiles you can run `git pull` in the dotfiles directory and re-run the install script
