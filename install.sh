@@ -16,9 +16,7 @@ error_message() {
 cat splash_art.txt
 
 echo "Welcome to my custom Arch Linux dot files installation script for KDE Plasma(You can skip Plasma installation if you want)."    
-echo "This script will install the required packages and configurations for my Arch Linux setup."
-echo "Please make sure you have an active internet connection before running this script."
-echo "Make sure to read the README.md file before running this script." 
+echo "Check readme.md for packages" 
 echo "Press any key to continue..."
 read -n 1 -s
 
@@ -40,8 +38,13 @@ echo "Install Neovim configs?"
 read -r -p "(Y/n) " install_nvim
 
 echo ""
+# Extra packages prompt 
+echo "Install extra packages?"
+read -r -p "(Y/n) " install_nvim
+
+echo ""
 echo "Do you want to set the hardware clock as local time?"
-read -r -p "(Y/n) " set_hwclock
+read -r -p "(Y/n) " install_optional 
 
 echo ""
 echo "Reboot after installation?"
@@ -50,24 +53,25 @@ read -r -p "(Y/n) " reboot
 # Install Plasma
 if [[ $install_plasma =~ ^[Yy]$ ]]; then
   echo "Installing plasma..."
-  sudo pacman -S plasma && success_message "Plasma installed successfully." || error_message "Failed to install Plasma."
+  sudo pacman --noconfirm -Syu plasma && success_message "Plasma installed successfully." || error_message "Failed to install Plasma."
 else
   echo "Skipping installing Plasma."
 fi
 
 # Install required packages
 echo "Installing required packages..."
-sudo pacman -Syu neovim neofetch alacritty chromium zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin ripgrep unzip zip && success_message "Required packages installed successfully." || {
+sudo pacman --noconfirm -S stow neovim neofetch alacritty chromium zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin ripgrep unzip zip && success_message "Required packages installed successfully." || {
   error_message "Error: Package installation failed. Please check your network connection or package repositories."
   exit 1
 }
 
 # Installing extra packages 
 echo "Installing extra packages..."
-sudo pacman -Syu discord spotify-launcher kate spectacle easyeffects lsp-plugins && success_message "Extra packages installed successfully." || {
+if [[$install_optional =~ ^[Yy]$ ]]; then
+  sudo pacman --noconfirm -Syu discord spotify-launcher kate spectacle easyeffects lsp-plugins && success_message "Extra packages installed successfully." || {
   error_message "Error: Package installation failed. Please check your network connection or package repositories."
-  exit 1
 }
+fi
 
 # Alacritty configuration
 cp -r alacritty ~/.config && success_message "Alacritty configuration installed successfully." || error_message "Failed to copy Alacritty configuration."
@@ -86,7 +90,7 @@ if [[ $set_hwclock =~ ^[Yy]$ ]]; then
 fi
 
 # Removing unwanted packages
-sudo pacman -R discover && success_message "Unwanted packages removed." || error_message "Failed to remove unwanted packages."
+sudo pacman --noconfirm -R discover && success_message "Unwanted packages removed." || error_message "Failed to remove unwanted packages."
 
 # ohmyzsh installation 
 echo "Installing Oh My Zsh..."
