@@ -40,11 +40,11 @@ read -r -p "(Y/n) " install_nvim
 echo ""
 # Extra packages prompt 
 echo "Install extra packages?"
-read -r -p "(Y/n) " install_nvim
+read -r -p "(Y/n) " install_optional
 
 echo ""
 echo "Do you want to set the hardware clock as local time?"
-read -r -p "(Y/n) " install_optional 
+read -r -p "(Y/n) " set_hwclock 
 
 echo ""
 echo "Reboot after installation?"
