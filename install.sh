@@ -38,6 +38,11 @@ echo "Install Neovim configs?"
 read -r -p "(Y/n) " install_nvim
 
 echo ""
+# Tmux installations and config prompt
+echo "Do you want to install tmux and configs?"
+read -r -p "(Y/n)" install_tmux
+
+echo ""
 # Extra packages prompt 
 echo "Install extra packages?"
 read -r -p "(Y/n) " install_optional
@@ -67,7 +72,7 @@ sudo pacman --noconfirm -S stow neovim neofetch alacritty chromium zsh git ttf-j
 
 # Installing extra packages 
 echo "Installing extra packages..."
-if [[$install_optional =~ ^[Yy]$ ]]; then
+if [[ $install_optional =~ ^[Yy]$ ]]; then
   sudo pacman --noconfirm -Syu discord spotify-launcher kate spectacle easyeffects lsp-plugins && success_message "Extra packages installed successfully." || {
   error_message "Error: Package installation failed. Please check your network connection or package repositories."
 }
@@ -88,6 +93,13 @@ fi
 if [[ $set_hwclock =~ ^[Yy]$ ]]; then
   sudo timedatectl set-local-rtc 1 && success_message "Hardware clock set as standard local time." || error_message "Failed to set hardware clock."
 fi
+
+# Installing TPM (temux plugin manager)
+if [[ $install_tmux =~ ^[Yy]$ ]]; then
+  sudo pacman --noconfirm -Syu tmux  && success_message "Installed tmux"
+
+  #tmux symlinks
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Removing unwanted packages
 sudo pacman --noconfirm -R discover && success_message "Unwanted packages removed." || error_message "Failed to remove unwanted packages."
