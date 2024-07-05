@@ -81,6 +81,9 @@ fi
 # Alacritty configuration
 cp -r alacritty ~/.config && success_message "Alacritty configuration installed successfully." || error_message "Failed to copy Alacritty configuration."
 
+# Kitty config
+stow kitty && success_message "Kitty configuration installed successfully." || error_message "Failed to copy Kitty configuration."
+
 # Neofetch configuration
 cp -r neofetch ~/.config && success_message "Neofetch configuration installed successfully." || error_message "Failed to copy Neofetch configuration."
 
