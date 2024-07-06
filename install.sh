@@ -79,17 +79,17 @@ if [[ $install_optional =~ ^[Yy]$ ]]; then
 fi
 
 # Alacritty configuration
-cp -r alacritty ~/.config && success_message "Alacritty configuration installed successfully." || error_message "Failed to copy Alacritty configuration."
+# cp -r alacritty ~/.config && success_message "Alacritty configuration installed successfully." || error_message "Failed to copy Alacritty configuration."
 
 # Kitty config
 stow kitty && success_message "Kitty configuration installed successfully." || error_message "Failed to copy Kitty configuration."
 
 # Neofetch configuration
-cp -r neofetch ~/.config && success_message "Neofetch configuration installed successfully." || error_message "Failed to copy Neofetch configuration."
+stow neofetch && success_message "Neofetch configuration installed successfully." || error_message "Failed to copy Neofetch configuration."
 
 # Neovim configuration installation
 if [[ $install_nvim =~ ^[Yy]$ ]]; then
-  cp -r nvim ~/.config && success_message "Neovim configuration installed successfully." || error_message "Failed to copy Neovim configuration."
+  stow nvim && success_message "Neovim configuration installed successfully." || error_message "Failed to copy Neovim configuration."
 fi
 
 # Set hardware clock as local time 
@@ -100,9 +100,7 @@ fi
 # Installing TPM (temux plugin manager)
 if [[ $install_tmux =~ ^[Yy]$ ]]; then
   sudo pacman --noconfirm -Syu tmux  && success_message "Installed tmux"
-
-  #tmux symlinks
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  stow tmux
 
 # Removing unwanted packages
 sudo pacman --noconfirm -R discover && success_message "Unwanted packages removed." || error_message "Failed to remove unwanted packages."
