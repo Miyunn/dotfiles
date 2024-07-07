@@ -74,6 +74,9 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+
+eval "$(tmuxifier init -)"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -95,10 +98,13 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+
+
+# Nvim aliases
+alias v="nvim"
+
+# Tmux aliases
+alias tx="tmuxifier list"
+alias txs="tmuxifier load-session"
 
 neofetch
