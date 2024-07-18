@@ -38,7 +38,7 @@ sudo systemctl enable sddm && success_message "SDDM enabled." || error_message "
 
 # Install required packages
 echo "Installing main packages..."
-sudo pacman --noconfirm -S stow neovim tmux neofetch kitty chromium zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin ripgrep unzip zip && success_message "Main packages installed successfully." || {
+sudo pacman --noconfirm -S stow neovim tmux neofetch alacritty chromium zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin ripgrep unzip zip && success_message "Main packages installed successfully." || {
   error_message "Error: Package installation failed. Please check your network connection or package repositories."
   exit 1
 }
@@ -49,7 +49,7 @@ sudo pacman --noconfirm -S discord spotify-launcher kate krita spectacle easyeff
 error_message "Error: Package installation failed. Please check your network connection or package repositories."
 }
 
-stow kitty && success_message "Kitty configuration installed successfully." || error_message "Failed to copy Kitty configuration."
+stow alacritty && success_message "Alacritty configuration installed successfully." || error_message "Failed to copy Kitty configuration."
 stow neofetch && success_message "Neofetch configuration installed successfully." || error_message "Failed to copy Neofetch configuration."
 stow nvim && success_message "Neovim configuration installed successfully." || error_message "Failed to copy Neovim configuration."
 stow tmux && success_message "Tmux configuration installed successfully." || error_message "Failed to copy Tmux configuration."
