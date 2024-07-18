@@ -1,4 +1,4 @@
-return {
+--[[ return {
   "navarasu/onedark.nvim",
   lazy = false,
   priority = 10000,
@@ -8,4 +8,4 @@ return {
     })
     require("onedark").load()
   end,
-}
+} ]]
