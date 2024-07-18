@@ -6,7 +6,7 @@
 
 ## Disclaimer
 
-The primary focus of this repository is to store my dotfiles. I do not prioritize distributing my dotfiles. As a result, I do not thoroughly test the installation scripts and do not test the dotfiles on other distributions or desktop environments. They should work but might require some modification sometimes.
+The primary focus of this repository is to store my dotfiles. I do not prioritize distributing my dotfiles. As a result, I do not thoroughly test the installation scripts and do not test the dotfiles on other distributions or desktop environments. They should work but might require some modifications.
 
 ## Installation
 
@@ -16,7 +16,9 @@ Clone the repository:
 git clone https://github.com/Miyunn/dotfiles.git ~/dotfiles
 ```
 
-### Option 1: Standard Installation
+### Option 1: Quick install
+
+This option bascially rapidly installs all the packages I use and symlink the configs with gnu-stow
 
 Run `install.sh` in the dotfiles directory:
 
@@ -25,13 +27,18 @@ cd ~/dotfiles && ./install.sh
 
 ```
 
-### Option 2: Fast Installation
+### Option 2: Custom install (outdated script)
+
+This allows you to pick and choose certain packages and customization options
 
 Run the following command in your terminal:
-
 ```sh
-cd ~/dotfiles && ./fast-install.sh
+cd ~/dotfiles && ./custom-install.sh
 ```
+
+### Option 3 : The good old way
+
+Just copy or move the configs to the .config directory :> 
 
 ## Main packages
 
@@ -49,7 +56,7 @@ cd ~/dotfiles && ./fast-install.sh
 - zip and unzip
 - zsh(Oh My Zsh)
 
-## Optional packages
+## Other packages
 
 - Chromium
 - Discord
@@ -58,12 +65,7 @@ cd ~/dotfiles && ./fast-install.sh
 - Easy effects
 - Linux studio plugins (lsp-plugins)
 
-## Known issues
-
-- When using the install script after zsh is installed the script will stop, work around is to re-run the script
-- Installation script is not configured to install the plasma configs
-
 ## Updating
 
-- To update the dotfiles you can run `git pull` in the dotfiles directorw
+- To update the dotfiles you can run `git pull` in the dotfiles directory
 - To update the packages you can run `yay -Syu` or `sudo pacman -Syu`
