@@ -104,7 +104,7 @@ eval "$(tmuxifier init -)"
 alias v="nvim"
 
 # Tmux aliases
-alias tx="tmuxifier list"
-alias txs="tmuxifier load-session"
+alias txl="tmuxifier list"
+alias tx="tmuxifier load-session"
 
 neofetch
