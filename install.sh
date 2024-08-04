@@ -49,6 +49,7 @@ sudo pacman --noconfirm -S discord spotify-launcher kate krita spectacle easyeff
 error_message "Error: Package installation failed. Please check your network connection or package repositories."
 }
 
+# Symlinking dotfiles
 stow alacritty && success_message "Alacritty configuration installed successfully." || error_message "Failed to copy Kitty configuration."
 stow neofetch && success_message "Neofetch configuration installed successfully." || error_message "Failed to copy Neofetch configuration."
 stow nvim && success_message "Neovim configuration installed successfully." || error_message "Failed to copy Neovim configuration."
@@ -71,7 +72,13 @@ sudo pacman --noconfirm -R discover && success_message "Unwanted packages remove
 echo "Installing Oh My Zsh..."
 RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && success_message "Oh My Zsh installed successfully." || error_message "Failed to install Oh My Zsh."
 
+# Installing Starship prompt
+echo "Installing Starship prompt..."
+sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes && success_message "Starship installed successfully." || error_message "Failed to install Starship."
+
+# symlinking more stuff
 stow zsh --adopt --override=~  && success_message "Oh My Zsh configuration copied." || error_message "Failed to copy Oh My Zsh configuration."
+stow starship 
 
 # Installing dev packages
 echo "Setting up development packages..."
