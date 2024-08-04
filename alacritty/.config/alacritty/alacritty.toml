@@ -7,9 +7,9 @@ import = [
 ]
 [window]
 dynamic_title = true
-decorations = "None"
 blur = true
 dynamic_padding = false
+opacity = 0.8
 
 [window.dimensions]
 columns = 80
