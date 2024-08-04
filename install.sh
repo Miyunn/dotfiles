@@ -53,7 +53,6 @@ stow alacritty && success_message "Alacritty configuration installed successfull
 stow neofetch && success_message "Neofetch configuration installed successfully." || error_message "Failed to copy Neofetch configuration."
 stow nvim && success_message "Neovim configuration installed successfully." || error_message "Failed to copy Neovim configuration."
 stow tmux && success_message "Tmux configuration installed successfully." || error_message "Failed to copy Tmux configuration."
-stow zsh && success_message "Oh My Zsh configuration copied." || error_message "Failed to copy Oh My Zsh configuration."
 git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier && success_message "Tmuxifier installed successfully." || error_message "Failed to install Tmuxifier."
 sudo timedatectl set-local-rtc 1 && success_message "Hardware clock set as standard local time." || error_message "Failed to set hardware clock."
 
@@ -71,6 +70,8 @@ sudo pacman --noconfirm -R discover && success_message "Unwanted packages remove
 # ohmyzsh installation 
 echo "Installing Oh My Zsh..."
 RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && success_message "Oh My Zsh installed successfully." || error_message "Failed to install Oh My Zsh."
+
+stow zsh --adopt --override=~  && success_message "Oh My Zsh configuration copied." || error_message "Failed to copy Oh My Zsh configuration."
 
 # Installing dev packages
 echo "Setting up development packages..."
