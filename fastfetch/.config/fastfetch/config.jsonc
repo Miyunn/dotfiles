@@ -1,0 +1,51 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "none",
+  },
+  "display": {
+    "separator": "->   ",
+    "color": {
+      "separator": "1", // Bold
+    },
+    "key": {
+      "type": "both",
+      "paddingLeft": 4,
+    },
+  },
+
+  "modules": [
+    "break",
+    {
+      "key": "User         ",
+      "keyColor": "green",
+      "type": "title",
+      "format": "{user-name-colored}{at-symbol-colored}{host-name-colored}",
+    },
+    {
+      "key": "OS           ",
+      "keyColor": "blue",
+      "type": "os",
+    },
+    {
+      "key": "Kernel       ",
+      "keyColor": "red",
+      "type": "kernel",
+    },
+    {
+      "key": "Uptime       ",
+      "keyColor": "cyan",
+      "type": "uptime",
+    },
+    {
+      "key": "Memory       ",
+      "keyColor": "yellow",
+      "type": "memory",
+    },
+    {
+      "key": "Disk         ",
+      "keyColor": "magenta",
+      "type": "disk",
+    },
+  ],
+}

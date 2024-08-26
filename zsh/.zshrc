@@ -107,6 +107,7 @@ alias v="nvim"
 alias txl="tmuxifier list"
 alias tx="tmuxifier load-session"
 
-neofetch
+fastfetch
+
 eval "$(starship init zsh)"
 
