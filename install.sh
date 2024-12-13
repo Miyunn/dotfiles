@@ -38,7 +38,7 @@ sudo systemctl enable sddm && success_message "SDDM enabled." || error_message "
 
 # Install required packages
 echo "Installing main packages..."
-sudo pacman --noconfirm -S stow neovim tmux fastfetch alacritty chromium zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin ripgrep unzip zip && success_message "Main packages installed successfully." || {
+sudo pacman --noconfirm -S stow neovim tmux fastfetch alacritty chromium zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin ripgrep unzip zip zoxide && success_message "Main packages installed successfully." || {
   error_message "Error: Package installation failed. Please check your network connection or package repositories."
   exit 1
 }

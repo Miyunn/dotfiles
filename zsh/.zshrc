@@ -110,4 +110,4 @@ alias tx="tmuxifier load-session"
 fastfetch
 
 eval "$(starship init zsh)"
-
+eval "$(zoxide init zsh)"
