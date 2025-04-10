@@ -38,14 +38,14 @@ sudo systemctl enable sddm && success_message "SDDM enabled." || error_message "
 
 # Install required packages
 echo "Installing main packages..."
-sudo pacman --noconfirm -S stow mesa neovim tmux fastfetch alacritty chromium zsh git ttf-jetbrains-mono-nerd noto-fonts-cjk wl-clipboard dolphin ripgrep unzip zip zoxide && success_message "Main packages installed successfully." || {
+sudo pacman --noconfirm -S stow mesa neovim tmux fastfetch alacritty chromium zsh git ttf-jetbrains-mono-nerd lazygit noto-fonts-cjk wl-clipboard dolphin ripgrep unzip zip zoxide && success_message "Main packages installed successfully." || {
   error_message "Error: Package installation failed. Please check your network connection or package repositories."
   exit 1
 }
 
 # Installing extra packages 
 echo "Installing other packages packages..."
-sudo pacman --noconfirm -S discord spotify-launcher kate krita spectacle easyeffects lsp-plugins && success_message "Extra packages installed successfully." || {
+sudo pacman --noconfirm -S discord spotify-launcher kate krita spectacle easyeffects lsp-plugins  && success_message "Extra packages installed successfully." || {
 error_message "Error: Package installation failed. Please check your network connection or package repositories."
 }
 
