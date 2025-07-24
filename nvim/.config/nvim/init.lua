@@ -34,10 +34,10 @@ vim.api.nvim_set_keymap("n", "<leader>hp", ":split<CR>", { noremap = true, silen
 vim.api.nvim_set_keymap("n", "<leader>vp", ":vsplit<CR>", { noremap = true, silent = true })
 
 -- Bidning to set from buffer to buffer
-vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
 
 vim.api.nvim_create_autocmd("CursorHold", {
 	buffer = bufnr,
