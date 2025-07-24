@@ -109,7 +109,7 @@ alias v="nvim"
 alias txl="tmuxifier list"
 alias tx="tmuxifier load-session"
 
-fastfetch
+# fastfetch
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
