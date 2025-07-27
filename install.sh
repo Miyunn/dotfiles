@@ -45,7 +45,7 @@ sudo pacman --noconfirm -S stow mesa neovim tmux fastfetch alacritty chromium zs
 
 # Installing extra packages 
 echo "Installing other packages packages..."
-sudo pacman --noconfirm -S discord spotify-launcher kate krita spectacle easyeffects lsp-plugins  && success_message "Extra packages installed successfully." || {
+sudo pacman --noconfirm -S discord spotify-launcher kate krita spectacle lsp-plugins openssh  && success_message "Extra packages installed successfully." || {
 error_message "Error: Package installation failed. Please check your network connection or package repositories."
 }
 
