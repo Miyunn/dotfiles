@@ -6,7 +6,7 @@
 
 ## Disclaimer
 
-The primary focus of this repository is to store my dotfiles. I do not prioritize distributing my dotfiles. As a result, I do not thoroughly test the installation scripts and do not test the dotfiles on other distributions or desktop environments. They should work but might require some modifications.
+The primary purpose of this repository is to serve as a personal archive for my dotfiles. While others are welcome to explore or reuse them, distribution is not a priority. As such, the installation scripts are not thoroughly tested, and the configurations are primarily tailored for my setup. They may work on other distributions or desktop environments, but some adjustments might be necessary
 
 ## Installation
 
@@ -16,31 +16,13 @@ Clone the repository:
 git clone https://github.com/Miyunn/dotfiles.git ~/dotfiles
 ```
 
-### Option 1: Quick install
-
-This option bascially rapidly installs all the packages I use and symlink the configs with gnu-stow
-
 Run `install.sh` in the dotfiles directory:
 
 ```sh
 cd ~/dotfiles && ./install.sh
-
 ```
 
-### Option 2: Custom install (outdated script)
-
-This allows you to pick and choose certain packages and customization options
-
-Run the following command in your terminal:
-```sh
-cd ~/dotfiles && ./custom-install.sh
-```
-
-### Option 3 : The good old way
-
-Just copy or move the configs to the .config directory :> 
-
-## Main packages
+## Packages
 
 - Alacritty (terminal emulator)
 - KDE Plasma (desktop environment)
@@ -62,8 +44,6 @@ Just copy or move the configs to the .config directory :>
 - Discord
 - Spotify (spotify-launcher)
 - Spectacle
-- Easy effects
-- Linux studio plugins (lsp-plugins)
 
 ## Updating
 
