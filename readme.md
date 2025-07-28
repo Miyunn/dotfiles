@@ -22,7 +22,11 @@ Run `install.sh` in the dotfiles directory:
 cd ~/dotfiles && ./install.sh
 ```
 
+Not all the packages but a list to just give you an idea
+
 ## Packages
+
+Not a complete list, just a little taste of what’s in my setup
 
 - Alacritty (terminal emulator)
 - KDE Plasma (desktop environment)
@@ -37,13 +41,12 @@ cd ~/dotfiles && ./install.sh
 - Tmux
 - zip and unzip
 - zsh(Oh My Zsh)
-
-## Other packages
-
 - Chromium
 - Discord
 - Spotify (spotify-launcher)
 - Spectacle
+- VLC
+- OBS
 
 ## Updating
 
