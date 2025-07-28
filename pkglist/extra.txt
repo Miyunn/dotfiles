@@ -1,0 +1,14 @@
+discord 
+spotify-launcher
+kate
+krita
+spectacle
+obs-studio
+vlc
+ffmpeg
+gst-libav
+gst-plugins-base
+gst-plugins-good
+gst-plugins-bad
+gst-plugins-ugly
+vlc-plugins-all

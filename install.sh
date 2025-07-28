@@ -13,6 +13,22 @@ error_message() {
   echo -e "${RED}$1${NC}"
 }
 
+install_packages_from_file() {
+  local file="$1"
+  local description="$2"
+
+  if [ ! -f "$file" ]; then
+    error_message "Package list $file not found."
+    return 1
+  fi
+
+  echo "Installing $description..."
+  xargs -a "$file" sudo pacman --noconfirm -S && success_message "$description installed successfully." || {
+    error_message "Error installing $description. Please check your network or repositories."
+    return 1
+  }
+}
+
 cat splash_art.txt
 
 echo "Welcome to my Arch Linux setup script! Installations will begin shortly."    
@@ -36,18 +52,10 @@ echo "Setting up KDE Plasma..."
 sudo pacman --noconfirm -Syu plasma && success_message "Plasma installed successfully." || error_message "Failed to install Plasma."
 sudo systemctl enable sddm && success_message "SDDM enabled." || error_message "Failed to enable SDDM."
 
-# Install required packages
-echo "Installing main packages..."
-sudo pacman --noconfirm -S stow mesa neovim tmux fastfetch alacritty chromium zsh git ttf-jetbrains-mono-nerd lazygit noto-fonts-cjk wl-clipboard dolphin ripgrep unzip zip zoxide && success_message "Main packages installed successfully." || {
-  error_message "Error: Package installation failed. Please check your network connection or package repositories."
-  exit 1
-}
-
-# Installing extra packages 
-echo "Installing other packages packages..."
-sudo pacman --noconfirm -S discord spotify-launcher kate krita spectacle openssh  && success_message "Extra packages installed successfully." || {
-error_message "Error: Package installation failed. Please check your network connection or package repositories."
-}
+# Installing packages
+install_packages_from_file "pkglist/main.txt" "main packages"
+install_packages_from_file "pkglist/extra.txt" "extra packages"
+install_packages_from_file "pkglist/dev.txt" "development packages"
 
 # Symlinking dotfiles
 stow alacritty && success_message "Alacritty configuration installed successfully." || error_message "Failed to copy Kitty configuration."
