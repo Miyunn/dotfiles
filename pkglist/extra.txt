@@ -12,3 +12,4 @@ gst-plugins-good
 gst-plugins-bad
 gst-plugins-ugly
 vlc-plugins-all
+gwenview
