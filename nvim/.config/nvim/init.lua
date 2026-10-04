@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable",
-		lazypath,
-	})
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -26,6 +26,9 @@ vim.api.nvim_set_keymap("v", "P", '"+p', { noremap = true })
 vim.api.nvim_set_keymap("n", "y", '"+y', { noremap = true })
 vim.api.nvim_set_keymap("n", "Y", "y$", { noremap = true })
 
+-- Enable vim-vinegar style navigating for oil.nvim
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 -- Allow mouse in all vim modes (cause why not)
 -- vim.opt.mouse = "a"
 
@@ -40,27 +43,27 @@ vim.api.nvim_set_keymap("n", "<leader>vp", ":vsplit<CR>", { noremap = true, sile
 -- vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
 
 vim.api.nvim_create_autocmd("CursorHold", {
-	buffer = bufnr,
-	callback = function()
-		local float_opts = {
-			focusable = false,
-			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-		}
+  buffer = bufnr,
+  callback = function()
+    local float_opts = {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+    }
 
-		if not vim.b.diagnostics_pos then
-			vim.b.diagnostics_pos = { nil, nil }
-		end
+    if not vim.b.diagnostics_pos then
+      vim.b.diagnostics_pos = { nil, nil }
+    end
 
-		local cursor_pos = vim.api.nvim_win_get_cursor(0)
-		if
-			(cursor_pos[1] ~= vim.b.diagnostics_pos[1] or cursor_pos[2] ~= vim.b.diagnostics_pos[2])
-			and #vim.diagnostic.get() > 0
-		then
-			vim.diagnostic.open_float(nil, float_opts)
-		end
+    local cursor_pos = vim.api.nvim_win_get_cursor(0)
+    if
+        (cursor_pos[1] ~= vim.b.diagnostics_pos[1] or cursor_pos[2] ~= vim.b.diagnostics_pos[2])
+        and #vim.diagnostic.get() > 0
+    then
+      vim.diagnostic.open_float(nil, float_opts)
+    end
 
-		vim.b.diagnostics_pos = cursor_pos
-	end,
+    vim.b.diagnostics_pos = cursor_pos
+  end,
 })
 
 -- Binding to dismiss noice.nvim notification
